@@ -11,4 +11,9 @@ public class LottoNumberTest {
 			() -> assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new LottoNumber(46))
 		);
 	}
+
+	@Test
+	void 가능한_모든_로또_번호_리스트_반환() {
+		assertThat(LottoNumber.getAllNumbers().size()).isEqualTo(45);
+	}
 }
