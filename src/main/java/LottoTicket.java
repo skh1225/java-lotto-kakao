@@ -27,4 +27,8 @@ public class LottoTicket {
 	public boolean contains(LottoNumber lottoNumber) {
 		return lottoNumbers.contains(lottoNumber);
 	}
+
+	public int countSameNumbers(LottoTicket lottoTicket) {
+		return Long.valueOf(lottoNumbers.stream().filter(lottoTicket::contains).count()).intValue();
+	}
 }
