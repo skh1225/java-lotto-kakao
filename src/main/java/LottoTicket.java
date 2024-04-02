@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +17,17 @@ public class LottoTicket {
 
 	public static LottoTicket of(List<Integer> lottoNumbers) {
 		return new LottoTicket(lottoNumbers.stream().map(LottoNumber::new).collect(Collectors.toList()));
+	}
+
+	public static LottoTicket random() {
+		List<LottoNumber> shuffledNumbers = getShuffledNumbers();
+		return new LottoTicket(shuffledNumbers.subList(0, LOTTO_NUMBER_COUNT));
+	}
+
+	private static List<LottoNumber> getShuffledNumbers() {
+		List<LottoNumber> shuffledNumbers = new ArrayList<>(LottoNumber.getAllNumbers());
+		Collections.shuffle(shuffledNumbers);
+		return shuffledNumbers;
 	}
 
 	private void validateSize(List<LottoNumber> lottoNumbers) {
