@@ -15,7 +15,7 @@ public class LottoWinningNumbers {
 		}
 	}
 
-	public LottoResult calculateResult(LottoTicket lottoTicket) {
-		return new LottoResult(lottoTicket.countSameNumbers(winningNumbers), lottoTicket.contains(bonusNumber));
+	public LottoWinningRank calculateResult(LottoTicket lottoTicket) {
+		return LottoWinningRank.calculateRank(lottoTicket.countSameNumbers(winningNumbers), lottoTicket.contains(bonusNumber));
 	}
 }

@@ -36,25 +36,4 @@ public class LottoWinningNumbersTest {
 		assertThatThrownBy((() -> new LottoWinningNumbers(winningNumbers, bonusNumber)))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
-
-	@ParameterizedTest
-	@CsvSource({
-		"1, 2, 3, 4, 5, 6, 7, 6, false",
-		"4, 2, 3, 1, 5, 8, 6, 5, true",
-		"9, 8, 1, 2, 3, 4, 6, 4, true"})
-	void 로또와_당첨_번호_사이의_동일한_수의_개수를_계산할_수_있다(int number1, int number2, int number3, int number4, int number5, int number6, int bonusNumber, int sameNumberCount, boolean hasBonusNumber) {
-		LottoNumber num1 = new LottoNumber(1);
-		LottoNumber num2 = new LottoNumber(2);
-		LottoNumber num3 = new LottoNumber(3);
-		LottoNumber num4 = new LottoNumber(4);
-		LottoNumber num5 = new LottoNumber(5);
-		LottoNumber num6 = new LottoNumber(6);
-		LottoTicket lottoTicket = new LottoTicket(List.of(num1, num2, num3, num4, num5, num6));
-
-		LottoNumber bonusNum = new LottoNumber(bonusNumber);
-		LottoTicket winningNumbers = new LottoTicket(List.of(new LottoNumber(number1), new LottoNumber(number2), new LottoNumber(number3), new LottoNumber(number4), new LottoNumber(number5), new LottoNumber(number6)));
-		LottoWinningNumbers lottoWinningNumbers = new LottoWinningNumbers(winningNumbers, bonusNum);
-
-		assertThat(lottoWinningNumbers.calculateResult(lottoTicket)).isEqualTo(new LottoResult(sameNumberCount, hasBonusNumber));
-	}
 }

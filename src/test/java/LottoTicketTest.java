@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class LottoTicketTest {
 	@Test
@@ -70,5 +72,24 @@ public class LottoTicketTest {
 			() -> assertThat(lottoTicket.contains(num1)).isTrue(),
 			() -> assertThat(lottoTicket.contains(num7)).isFalse()
 		);
+	}
+
+	@ParameterizedTest
+	@CsvSource({
+		"1, 2, 3, 4, 5, 6, 6",
+		"4, 2, 3, 1, 5, 8, 5",
+		"9, 8, 1, 2, 3, 4, 4"})
+	void 두_로또_번호_사이의_동일한_번호의_갯수를_반환할_수_있다(int number1, int number2, int number3, int number4, int number5, int number6, int matchCount) {
+		LottoNumber num1 = new LottoNumber(1);
+		LottoNumber num2 = new LottoNumber(2);
+		LottoNumber num3 = new LottoNumber(3);
+		LottoNumber num4 = new LottoNumber(4);
+		LottoNumber num5 = new LottoNumber(5);
+		LottoNumber num6 = new LottoNumber(6);
+		LottoTicket lottoTicket1 = new LottoTicket(List.of(num1, num2, num3, num4, num5, num6));
+
+		LottoTicket lottoTicket2 = new LottoTicket(List.of(new LottoNumber(number1), new LottoNumber(number2), new LottoNumber(number3), new LottoNumber(number4), new LottoNumber(number5), new LottoNumber(number6)));
+
+		assertThat(lottoTicket1.countSameNumbers(lottoTicket2)).isEqualTo(matchCount);
 	}
 }
