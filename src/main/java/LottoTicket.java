@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoTicket {
 	private static final int LOTTO_NUMBER_COUNT = 6;
@@ -6,10 +7,14 @@ public class LottoTicket {
 
 	private final List<LottoNumber> lottoNumbers;
 
-	public LottoTicket(List<LottoNumber> lottoNumbers) {
+	private LottoTicket(List<LottoNumber> lottoNumbers) {
 		validateSize(lottoNumbers);
 		validateDuplicate(lottoNumbers);
 		this.lottoNumbers = lottoNumbers;
+	}
+
+	public static LottoTicket of(List<Integer> lottoNumbers) {
+		return new LottoTicket(lottoNumbers.stream().map(LottoNumber::new).collect(Collectors.toList()));
 	}
 
 	private void validateSize(List<LottoNumber> lottoNumbers) {
