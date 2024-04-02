@@ -24,7 +24,7 @@ public class LottoGameResult {
 		int totalPrize = 0;
 		for (Map.Entry<LottoWinningRank, Integer> entry : rankCounts.entrySet()) {
 			ticketCount += entry.getValue();
-			totalPrize += entry.getKey().getPrize();
+			totalPrize += entry.getValue() * entry.getKey().getPrize();
 		}
 		return totalPrize / (double)(ticketCount * LottoTicket.PRICE);
 	}

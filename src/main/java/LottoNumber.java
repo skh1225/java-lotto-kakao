@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class LottoNumber {
+public class LottoNumber implements Comparable<LottoNumber> {
 	private static final int MIN_LOTTO_NUMBER = 1;
 	private static final int MAX_LOTTO_NUMBER = 45;
 
@@ -16,7 +16,8 @@ public class LottoNumber {
 
 	private void validateLottoNumber(int value) {
 		if (value < MIN_LOTTO_NUMBER || value > MAX_LOTTO_NUMBER) {
-			throw new IllegalArgumentException(String.format("로또 번호는 %d이상 %d이하 여야합니다.", MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER));
+			throw new IllegalArgumentException(
+				String.format("로또 번호는 %d이상 %d이하 여야합니다.", MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER));
 		}
 	}
 
@@ -41,5 +42,15 @@ public class LottoNumber {
 	@Override
 	public int hashCode() {
 		return Objects.hash(value);
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+
+	@Override
+	public int compareTo(LottoNumber o) {
+		return Integer.compare(value, o.value);
 	}
 }

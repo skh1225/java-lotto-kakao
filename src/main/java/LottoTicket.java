@@ -49,4 +49,11 @@ public class LottoTicket {
 	public int countSameNumbers(LottoTicket lottoTicket) {
 		return Long.valueOf(lottoNumbers.stream().filter(lottoTicket::contains).count()).intValue();
 	}
+
+	@Override
+	public String toString() {
+		List<LottoNumber> sortedLottoNumbers = new ArrayList<>(lottoNumbers);
+		Collections.sort(sortedLottoNumbers);
+		return sortedLottoNumbers.toString();
+	}
 }

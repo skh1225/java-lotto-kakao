@@ -2,6 +2,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ public class LottoGameTest {
 
 	@Test
 	void 당첨_통계를_계산하여_반환한다() {
-		List<LottoTicket> lottoTickets = List.of(
+		LottoTickets lottoTickets = new LottoTickets(List.of(
 			LottoTicket.of(List.of(11, 12, 13, 14, 15, 16)),
 			LottoTicket.of(List.of(1, 12, 13, 14, 15, 16)),
 			LottoTicket.of(List.of(1, 2, 13, 14, 15, 16)),
@@ -18,7 +19,7 @@ public class LottoGameTest {
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 16)),
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 7)),
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 6))
-		);
+		));
 
 		LottoWinningNumbers lottoWinningNumbers = new LottoWinningNumbers(
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 6)),
