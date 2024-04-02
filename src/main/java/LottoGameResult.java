@@ -18,4 +18,14 @@ public class LottoGameResult {
 	public int getCount(LottoWinningRank lottoWinningRank) {
 		return rankCounts.get(lottoWinningRank);
 	}
+
+	public double calculateYield() {
+		int ticketCount = 0;
+		int totalPrize = 0;
+		for (Map.Entry<LottoWinningRank, Integer> entry : rankCounts.entrySet()) {
+			ticketCount += entry.getValue();
+			totalPrize += entry.getKey().getPrize();
+		}
+		return totalPrize / (double)(ticketCount * LottoTicket.PRICE);
+	}
 }
