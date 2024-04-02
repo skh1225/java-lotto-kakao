@@ -1,12 +1,12 @@
 import java.util.Arrays;
 
 public enum LottoWinningRank {
-	LOTTO_LOSE(0, false, 0),
-	LOTTO_FIFTH_PRIZE(3, false, 5_000),
-	LOTTO_FOURTH_PRIZE(4, false, 50_000),
-	LOTTO_THIRD_PRIZE(5, false, 1_500_000),
-	LOTTO_SECOND_PRIZE(5, true, 30_000_000),
-	LOTTO_FIRST_PRIZE(6, false, 2_000_000_000);
+	LOSE(0, false, 0),
+	FIFTH_PRIZE(3, false, 5_000),
+	FOURTH_PRIZE(4, false, 50_000),
+	THIRD_PRIZE(5, false, 1_500_000),
+	SECOND_PRIZE(5, true, 30_000_000),
+	FIRST_PRIZE(6, false, 2_000_000_000);
 
 	private final int matchCount;
 	private final boolean requireBonusNumber;
@@ -33,6 +33,6 @@ public enum LottoWinningRank {
 		return Arrays.stream(values())
 			.filter(r -> r.matchCount == matchCount)
 			.findFirst()
-			.orElse(LOTTO_LOSE);
+			.orElse(LOSE);
 	}
 }
