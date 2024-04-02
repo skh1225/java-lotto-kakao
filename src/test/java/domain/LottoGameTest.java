@@ -1,10 +1,19 @@
+package domain;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+
+import domain.LottoGame;
+import domain.LottoGameResult;
+import domain.LottoNumber;
+import domain.LottoTicket;
+import domain.LottoTickets;
+import domain.LottoWinningNumbers;
+import domain.LottoWinningRank;
 
 public class LottoGameTest {
 

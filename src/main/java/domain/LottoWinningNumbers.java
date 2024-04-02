@@ -1,3 +1,5 @@
+package domain;
+
 public class LottoWinningNumbers {
 
 	private final LottoTicket winningNumbers;

@@ -1,4 +1,9 @@
-import java.util.List;
+import domain.Cash;
+import domain.LottoGame;
+import domain.LottoNumber;
+import domain.LottoTicket;
+import domain.LottoTickets;
+import domain.LottoWinningNumbers;
 
 public class LottoController {
 	private final LottoView view;

@@ -1,3 +1,5 @@
+package domain;
+
 public class LottoGame {
 
 	private final LottoTickets lottoTickets;

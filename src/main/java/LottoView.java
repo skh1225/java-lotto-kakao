@@ -2,6 +2,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import domain.Cash;
+import domain.LottoGameResult;
+import domain.LottoNumber;
+import domain.LottoTicket;
+import domain.LottoTickets;
+import domain.LottoWinningRank;
+
 public class LottoView {
 
 	private static final Scanner scanner = new Scanner(System.in);
@@ -43,29 +50,40 @@ public class LottoView {
 		System.out.println("당첨 통계");
 		System.out.println("---------");
 
+		List<LottoWinningRank> ranksExceptLose = getRanksExceptLose();
 		StringBuilder builder = new StringBuilder();
-		for (LottoWinningRank lottoWinningRank : LottoWinningRank.values()) {
-			if (lottoWinningRank == LottoWinningRank.LOSE) {
-				continue;
-			}
+		for (LottoWinningRank lottoWinningRank : ranksExceptLose) {
+			appendRankResult(builder, lottoGameResult, lottoWinningRank);
+		}
+		appendYield(builder, lottoGameResult);
+		System.out.println(builder);
+	}
 
-			builder.append(String.format("%d개 일치 ", lottoWinningRank.getMatchCount()));
+	private static void appendRankResult(StringBuilder builder, LottoGameResult lottoGameResult, LottoWinningRank lottoWinningRank) {
+		builder.append(String.format("%d개 일치 ", lottoWinningRank.getMatchCount()));
 
-			if (lottoWinningRank.requireBonusNumber()) {
-				builder.deleteCharAt(builder.length() - 1);
-				builder.append(", 보너스 볼 일치");
-			}
-
-			builder.append(String.format("(%d원) - %d개", lottoWinningRank.getPrize(), lottoGameResult.getCount(lottoWinningRank)));
-			builder.append("\n");
+		if (lottoWinningRank.requireBonusNumber()) {
+			builder.deleteCharAt(builder.length() - 1);
+			builder.append(", 보너스 볼 일치");
 		}
 
+		builder.append(String.format("(%d원) - %d개", lottoWinningRank.getPrize(), lottoGameResult.getCount(
+			lottoWinningRank)));
+		builder.append("\n");
+	}
+
+	private void appendYield(StringBuilder builder, LottoGameResult lottoGameResult) {
 		builder.append(String.format("총 수익률은 %.2f입니다.", lottoGameResult.calculateYield()));
 
 		if (lottoGameResult.calculateYield() < 1.0) {
 			builder.append("(기준이 1이기 때문에 결과적으로 손해라는 의미임)");
 		}
+	}
 
-		System.out.println(builder);
+	private static List<LottoWinningRank> getRanksExceptLose() {
+		List<LottoWinningRank> ranksExceptLose = Arrays.stream(LottoWinningRank.values())
+			.filter(r -> r != LottoWinningRank.LOSE)
+			.collect(Collectors.toList());
+		return ranksExceptLose;
 	}
 }
