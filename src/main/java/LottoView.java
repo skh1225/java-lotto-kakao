@@ -11,18 +11,18 @@ import domain.LottoWinningRank;
 
 public class LottoView {
 
-	private static final Scanner scanner = new Scanner(System.in);
+	private static final Scanner SCANNER = new Scanner(System.in);
 
-	public Cash getCash() {
+	public static Cash getCash() {
 		System.out.println("구입금액을 입력해 주세요.");
-		return new Cash(Integer.parseInt(scanner.nextLine()));
+		return new Cash(Integer.parseInt(SCANNER.nextLine()));
 	}
 
-	public void displayPaidTicketCount(int ticketCount) {
+	public static void displayPaidTicketCount(int ticketCount) {
 		System.out.printf("%d개를 구매했습니다.%n", ticketCount);
 	}
 
-	public void displayLottoTickets(LottoTickets lottoTickets) {
+	public static void displayLottoTickets(LottoTickets lottoTickets) {
 		StringBuilder builder = new StringBuilder();
 		for (LottoTicket lottoTicket : lottoTickets.getLottoTickets()) {
 			builder.append(lottoTicket.toString());
@@ -31,9 +31,9 @@ public class LottoView {
 		System.out.println(builder);
 	}
 
-	public LottoTicket getWinningNumbers() {
+	public static LottoTicket getWinningNumbers() {
 		System.out.println("지난 주 당첨 번호를 입력해 주세요.");
-		String line = scanner.nextLine();
+		String line = SCANNER.nextLine();
 		List<Integer> numberStrings = Stream.of(line.split(","))
 			.map(String::trim)
 			.map(Integer::parseInt)
@@ -41,12 +41,12 @@ public class LottoView {
 		return LottoTicket.of(numberStrings);
 	}
 
-	public LottoNumber getBonusNumber() {
+	public static LottoNumber getBonusNumber() {
 		System.out.println("보너스 볼을 입력해 주세요.");
-		return new LottoNumber(Integer.parseInt(scanner.nextLine()));
+		return new LottoNumber(Integer.parseInt(SCANNER.nextLine()));
 	}
 
-	public void displayResult(LottoGameResult lottoGameResult) {
+	public static void displayResult(LottoGameResult lottoGameResult) {
 		System.out.println("당첨 통계");
 		System.out.println("---------");
 
@@ -72,7 +72,7 @@ public class LottoView {
 		builder.append("\n");
 	}
 
-	private void appendYield(StringBuilder builder, LottoGameResult lottoGameResult) {
+	private static void appendYield(StringBuilder builder, LottoGameResult lottoGameResult) {
 		builder.append(String.format("총 수익률은 %.2f입니다.", lottoGameResult.calculateYield()));
 
 		if (lottoGameResult.calculateYield() < 1.0) {

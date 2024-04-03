@@ -6,24 +6,19 @@ import domain.LottoTickets;
 import domain.LottoWinningNumbers;
 
 public class LottoController {
-	private final LottoView view;
-
-	public LottoController(LottoView view) {
-		this.view = view;
-	}
 
 	public void play() {
-		Cash cash = view.getCash();
-		view.displayPaidTicketCount(cash.getTicketCount());
+		Cash cash = LottoView.getCash();
+		LottoView.displayPaidTicketCount(cash.getTicketCount());
 
 		LottoTickets lottoTickets = LottoTickets.ofRandom(cash.getTicketCount());
-		view.displayLottoTickets(lottoTickets);
+		LottoView.displayLottoTickets(lottoTickets);
 
-		LottoTicket winningTicket = view.getWinningNumbers();
-		LottoNumber bonusNumber = view.getBonusNumber();
+		LottoTicket winningTicket = LottoView.getWinningNumbers();
+		LottoNumber bonusNumber = LottoView.getBonusNumber();
 		LottoWinningNumbers lottoWinningNumbers = new LottoWinningNumbers(winningTicket, bonusNumber);
 
 		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
-		view.displayResult(lottoGame.calculateResult());
+		LottoView.displayResult(lottoGame.calculateResult());
 	}
 }
