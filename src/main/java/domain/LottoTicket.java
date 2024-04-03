@@ -17,8 +17,11 @@ public class LottoTicket {
 		this.lottoNumbers = lottoNumbers;
 	}
 
-	public static LottoTicket of(List<Integer> lottoNumbers) {
-		return new LottoTicket(lottoNumbers.stream().map(LottoNumber::new).collect(Collectors.toList()));
+	public static LottoTicket of(List<Integer> numbers) {
+		List<LottoNumber> lottoNumbers = numbers.stream()
+			.map(LottoNumber::new)
+			.collect(Collectors.toList());
+		return new LottoTicket(lottoNumbers);
 	}
 
 	public static LottoTicket random() {
