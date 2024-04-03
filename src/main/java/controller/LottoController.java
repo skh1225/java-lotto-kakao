@@ -12,9 +12,11 @@ public class LottoController {
 
 	public void play() {
 		Cash cash = LottoView.getCash();
-		LottoView.displayPaidTicketCount(cash.getTicketCount());
 
-		LottoTickets lottoTickets = LottoTickets.ofRandom(cash.getTicketCount());
+		int countOfTickets = cash.getTicketCount();
+		LottoView.displayPaidTicketCount(countOfTickets);
+
+		LottoTickets lottoTickets = LottoTickets.ofRandom(countOfTickets);
 		LottoView.displayLottoTickets(lottoTickets);
 
 		LottoTicket winningTicket = LottoView.getWinningNumbers();
