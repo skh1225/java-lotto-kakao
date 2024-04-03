@@ -8,8 +8,15 @@ import java.util.Objects;
 public class LottoNumber implements Comparable<LottoNumber> {
 	private static final int MIN_LOTTO_NUMBER = 1;
 	private static final int MAX_LOTTO_NUMBER = 45;
+	private static final List<LottoNumber> CACHE = new ArrayList<>();
 
 	private final int value;
+
+	static {
+		for (int i = MIN_LOTTO_NUMBER; i <= MAX_LOTTO_NUMBER; i++) {
+			CACHE.add(new LottoNumber(i));
+		}
+	}
 
 	public LottoNumber(int value) {
 		validateLottoNumber(value);
@@ -24,11 +31,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 	}
 
 	public static List<LottoNumber> getAllNumbers() {
-		List<LottoNumber> result = new ArrayList<>();
-		for (int i = MIN_LOTTO_NUMBER; i <= MAX_LOTTO_NUMBER; i++) {
-			result.add(new LottoNumber(i));
-		}
-		return Collections.unmodifiableList(result);
+		return Collections.unmodifiableList(CACHE);
 	}
 
 	@Override
