@@ -1,3 +1,5 @@
+package controller;
+
 import domain.Cash;
 import domain.LottoGame;
 import domain.LottoNumber;
