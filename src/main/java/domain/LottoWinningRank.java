@@ -22,7 +22,7 @@ public enum LottoWinningRank {
 
 	public static LottoWinningRank calculateRank(int matchCount, boolean hasBonusNumber) {
 		return Arrays.stream(values())
-			.filter(r -> isSecondPrize(matchCount, hasBonusNumber, r))
+			.filter(rank -> isSecondPrize(matchCount, hasBonusNumber, rank))
 			.findFirst()
 			.orElse(LottoWinningRank.calculateRank(matchCount));
 	}
@@ -33,7 +33,7 @@ public enum LottoWinningRank {
 
 	private static LottoWinningRank calculateRank(int matchCount) {
 		return Arrays.stream(values())
-			.filter(r -> r.matchCount == matchCount)
+			.filter(rank -> rank.matchCount == matchCount)
 			.findFirst()
 			.orElse(LOSE);
 	}

@@ -17,7 +17,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 	}
 
 	private void validateLottoNumber(int value) {
-		if (value < MIN_LOTTO_NUMBER || value > MAX_LOTTO_NUMBER) {
+		if (value < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < value) {
 			throw new IllegalArgumentException(
 				String.format("로또 번호는 %d이상 %d이하 여야합니다. value: %d", MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, value));
 		}
