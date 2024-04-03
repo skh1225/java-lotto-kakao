@@ -83,9 +83,8 @@ public class LottoView {
 	}
 
 	private static List<LottoWinningRank> getRanksExceptLose() {
-		List<LottoWinningRank> ranksExceptLose = Arrays.stream(LottoWinningRank.values())
-			.filter(r -> r != LottoWinningRank.LOSE)
+		return Arrays.stream(LottoWinningRank.values())
+			.filter(rank -> rank != LottoWinningRank.LOSE)
 			.collect(Collectors.toList());
-		return ranksExceptLose;
 	}
 }
