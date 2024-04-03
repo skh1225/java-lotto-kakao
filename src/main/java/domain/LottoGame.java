@@ -3,9 +3,9 @@ package domain;
 public class LottoGame {
 
 	private final LottoTickets lottoTickets;
-	private final LottoWinningNumbers lottoWinningNumbers;
+	private final LottoWinningTicket lottoWinningNumbers;
 
-	public LottoGame(LottoTickets lottoTickets, LottoWinningNumbers lottoWinningNumbers) {
+	public LottoGame(LottoTickets lottoTickets, LottoWinningTicket lottoWinningNumbers) {
 		this.lottoTickets = lottoTickets;
 		this.lottoWinningNumbers = lottoWinningNumbers;
 	}

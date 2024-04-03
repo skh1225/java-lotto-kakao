@@ -5,7 +5,7 @@ import domain.LottoGame;
 import domain.LottoNumber;
 import domain.LottoTicket;
 import domain.LottoTickets;
-import domain.LottoWinningNumbers;
+import domain.LottoWinningTicket;
 import ui.LottoView;
 
 public class LottoController {
@@ -21,7 +21,7 @@ public class LottoController {
 
 		LottoTicket winningTicket = LottoView.getWinningNumbers();
 		LottoNumber bonusNumber = LottoView.getBonusNumber();
-		LottoWinningNumbers lottoWinningNumbers = new LottoWinningNumbers(winningTicket, bonusNumber);
+		LottoWinningTicket lottoWinningNumbers = new LottoWinningTicket(winningTicket, bonusNumber);
 
 		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
 		LottoView.displayResult(lottoGame.calculateResult());

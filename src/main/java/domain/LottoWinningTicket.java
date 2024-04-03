@@ -1,11 +1,11 @@
 package domain;
 
-public class LottoWinningNumbers {
+public class LottoWinningTicket {
 
 	private final LottoTicket winningNumbers;
 	private final LottoNumber bonusNumber;
 
-	public LottoWinningNumbers(LottoTicket winningNumbers, LottoNumber bonusNumber) {
+	public LottoWinningTicket(LottoTicket winningNumbers, LottoNumber bonusNumber) {
 		validateDuplicateBonusNumber(winningNumbers, bonusNumber);
 		this.winningNumbers = winningNumbers;
 		this.bonusNumber = bonusNumber;

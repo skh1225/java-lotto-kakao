@@ -7,14 +7,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import domain.LottoGame;
-import domain.LottoGameResult;
-import domain.LottoNumber;
-import domain.LottoTicket;
-import domain.LottoTickets;
-import domain.LottoWinningNumbers;
-import domain.LottoWinningRank;
-
 public class LottoGameTest {
 
 	@Test
@@ -30,7 +22,7 @@ public class LottoGameTest {
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 6))
 		));
 
-		LottoWinningNumbers lottoWinningNumbers = new LottoWinningNumbers(
+		LottoWinningTicket lottoWinningNumbers = new LottoWinningTicket(
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 6)),
 			new LottoNumber(7)
 		);
