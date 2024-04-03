@@ -63,7 +63,7 @@ public class LottoView {
 	private static void appendRankResult(StringBuilder builder, LottoGameResult lottoGameResult, LottoWinningRank lottoWinningRank) {
 		builder.append(String.format("%d개 일치 ", lottoWinningRank.getMatchCount()));
 
-		if (lottoWinningRank.requireBonusNumber()) {
+		if (lottoWinningRank == LottoWinningRank.SECOND_PRIZE) {
 			builder.deleteCharAt(builder.length() - 1);
 			builder.append(", 보너스 볼 일치");
 		}
