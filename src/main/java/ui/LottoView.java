@@ -57,7 +57,6 @@ public class LottoView {
 		for (LottoWinningRank lottoWinningRank : ranksExceptLose) {
 			appendRankResult(builder, lottoGameResult, lottoWinningRank);
 		}
-		appendYield(builder, lottoGameResult);
 		System.out.println(builder);
 	}
 
@@ -74,11 +73,11 @@ public class LottoView {
 		builder.append("\n");
 	}
 
-	private static void appendYield(StringBuilder builder, LottoGameResult lottoGameResult) {
-		builder.append(String.format("총 수익률은 %.2f입니다.", lottoGameResult.calculateYield()));
+	public static void displayYield(double yield) {
+		System.out.printf("총 수익률은 %.2f입니다.", yield);
 
-		if (lottoGameResult.calculateYield() < 1.0) {
-			builder.append("(기준이 1이기 때문에 결과적으로 손해라는 의미임)");
+		if (yield < 1.0) {
+			System.out.println("(기준이 1이기 때문에 결과적으로 손해라는 의미임)");
 		}
 	}
 
