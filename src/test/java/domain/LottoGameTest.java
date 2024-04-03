@@ -22,7 +22,7 @@ public class LottoGameTest {
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 6))
 		));
 
-		LottoWinningTicket lottoWinningNumbers = new LottoWinningTicket(
+		WinningLottoTicket lottoWinningNumbers = new WinningLottoTicket(
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 6)),
 			new LottoNumber(7)
 		);
