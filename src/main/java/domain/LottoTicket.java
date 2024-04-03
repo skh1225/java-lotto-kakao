@@ -34,7 +34,7 @@ public class LottoTicket {
 
 	private void validateSize(List<LottoNumber> lottoNumbers) {
 		if (lottoNumbers.size() != LOTTO_NUMBER_COUNT) {
-			throw new IllegalArgumentException(String.format("로또 번호는 %d개 입니다.", LOTTO_NUMBER_COUNT));
+			throw new IllegalArgumentException(String.format("로또 번호는 %d개여야 합니다. value: %d", LOTTO_NUMBER_COUNT, lottoNumbers.size()));
 		}
 	}
 

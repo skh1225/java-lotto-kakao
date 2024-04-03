@@ -13,7 +13,7 @@ public class LottoWinningNumbers {
 
 	private void validateDuplicateBonusNumber(LottoTicket winningNumbers, LottoNumber bonusNumber) {
 		if (winningNumbers.contains(bonusNumber)) {
-			throw new IllegalArgumentException("보너스 번호는 당첨 번호에 포함되선 안됩니다.");
+			throw new IllegalArgumentException(String.format("보너스 번호는 당첨 번호에 포함되선 안됩니다. LottoTicket: %s, bonusNumber: %s", winningNumbers, bonusNumber));
 		}
 	}
 
