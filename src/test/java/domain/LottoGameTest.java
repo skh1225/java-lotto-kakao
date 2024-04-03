@@ -24,7 +24,7 @@ public class LottoGameTest {
 
 		WinningLottoTicket lottoWinningNumbers = new WinningLottoTicket(
 			LottoTicket.of(List.of(1, 2, 3, 4, 5, 6)),
-			new LottoNumber(7)
+			LottoNumber.of(7)
 		);
 
 		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);

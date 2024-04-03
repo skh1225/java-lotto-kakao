@@ -19,7 +19,7 @@ public class LottoTicket {
 
 	public static LottoTicket of(List<Integer> numbers) {
 		List<LottoNumber> lottoNumbers = numbers.stream()
-			.map(LottoNumber::new)
+			.map(LottoNumber::of)
 			.collect(Collectors.toList());
 		return new LottoTicket(lottoNumbers);
 	}
@@ -30,7 +30,7 @@ public class LottoTicket {
 	}
 
 	private static List<LottoNumber> getShuffledNumbers() {
-		List<LottoNumber> shuffledNumbers = new ArrayList<>(LottoNumber.getAllNumbers());
+		List<LottoNumber> shuffledNumbers = new ArrayList<>(LottoNumber.values());
 		Collections.shuffle(shuffledNumbers);
 		return shuffledNumbers;
 	}

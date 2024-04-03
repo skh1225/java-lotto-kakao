@@ -23,14 +23,19 @@ public class LottoNumber implements Comparable<LottoNumber> {
 		this.value = value;
 	}
 
-	private void validateLottoNumber(int value) {
+	public static LottoNumber of(int value) {
+		validateLottoNumber(value);
+		return CACHE.get(value);
+	}
+
+	private static void validateLottoNumber(int value) {
 		if (value < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < value) {
 			throw new IllegalArgumentException(
 				String.format("로또 번호는 %d이상 %d이하 여야합니다. value: %d", MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, value));
 		}
 	}
 
-	public static List<LottoNumber> getAllNumbers() {
+	public static List<LottoNumber> values() {
 		return Collections.unmodifiableList(CACHE);
 	}
 
