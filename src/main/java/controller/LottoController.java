@@ -6,6 +6,7 @@ import domain.LottoNumber;
 import domain.LottoTicket;
 import domain.LottoTickets;
 import domain.LottoWinningNumbers;
+import ui.LottoView;
 
 public class LottoController {
 
