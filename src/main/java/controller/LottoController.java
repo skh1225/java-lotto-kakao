@@ -21,24 +21,6 @@ public class LottoController {
 		displayLottoGameResult(lottoGameResult);
 	}
 
-	private static void displayLottoGameResult(LottoGameResult lottoGameResult) {
-		LottoView.displayResult(lottoGameResult);
-		LottoView.displayYield(lottoGameResult.calculateYield());
-	}
-
-	private static LottoGameResult runLottoGame(LottoTickets lottoTickets,
-		WinningLottoTicket lottoWinningNumbers) {
-		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
-		LottoGameResult lottoGameResult = lottoGame.calculateResult();
-		return lottoGameResult;
-	}
-
-	private static WinningLottoTicket inputLottoWinningTicket() {
-		LottoTicket winningTicket = LottoView.getWinningNumbers();
-		LottoNumber bonusNumber = LottoView.getBonusNumber();
-		return new WinningLottoTicket(winningTicket, bonusNumber);
-	}
-
 	private static LottoTickets buyLottoTickets() {
 		Cash cash = LottoView.getCash();
 		int countOfTickets = cash.getTicketCount();
@@ -47,5 +29,22 @@ public class LottoController {
 		LottoTickets lottoTickets = LottoTickets.ofRandom(countOfTickets);
 		LottoView.displayLottoTickets(lottoTickets);
 		return lottoTickets;
+	}
+
+	private static WinningLottoTicket inputLottoWinningTicket() {
+		LottoTicket winningTicket = LottoView.getWinningNumbers();
+		LottoNumber bonusNumber = LottoView.getBonusNumber();
+		return new WinningLottoTicket(winningTicket, bonusNumber);
+	}
+
+	private static LottoGameResult runLottoGame(LottoTickets lottoTickets,
+		WinningLottoTicket lottoWinningNumbers) {
+		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
+		return lottoGame.calculateResult();
+	}
+
+	private static void displayLottoGameResult(LottoGameResult lottoGameResult) {
+		LottoView.displayResult(lottoGameResult);
+		LottoView.displayYield(lottoGameResult.calculateYield());
 	}
 }
