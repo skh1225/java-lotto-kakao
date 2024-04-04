@@ -5,18 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoTickets {
-	private final List<LottoTicket> lottoTickets = new ArrayList<>();
-
-	public static LottoTickets ofRandom(int count) {
-		List<LottoTicket> lottoTickets = new ArrayList<>();
-		for (int i = 0; i < count; i++) {
-			lottoTickets.add(LottoTicketGenerator.generateRandomLottoTicket());
-		}
-		return new LottoTickets(lottoTickets);
-	}
+	private final List<LottoTicket> lottoTickets;
 
 	public LottoTickets(List<LottoTicket> lottoTickets) {
-		this.lottoTickets.addAll(lottoTickets);
+		this.lottoTickets = lottoTickets;
+	}
+
+	public void addRandomLottoTicket(int count) {
+		for (int i = 0; i < count; i++) {
+			this.lottoTickets.add(LottoTicketGenerator.generateRandomLottoTicket());
+		}
 	}
 
 	public List<LottoTicket> getLottoTickets() {

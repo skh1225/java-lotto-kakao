@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import domain.Cash;
 import domain.LottoGame;
 import domain.LottoGameResult;
@@ -23,10 +26,14 @@ public class LottoController {
 
 	private static LottoTickets buyLottoTickets() {
 		Cash cash = LottoView.getCash();
-		int countOfTickets = cash.getTicketCount();
-		LottoView.displayPaidTicketCount(countOfTickets);
+		int countOfManualTickets = LottoView.getCountOfManualTickets();
+		cash.purchase(LottoTicket.PRICE, countOfManualTickets);
+		LottoTickets lottoTickets = LottoView.getManualLottoTickets(countOfManualTickets);
 
-		LottoTickets lottoTickets = LottoTickets.ofRandom(countOfTickets);
+		int countOfRandomTickets = cash.getTicketCount();
+		lottoTickets.addRandomLottoTicket(countOfRandomTickets);
+
+		LottoView.displayPaidTicketCount(countOfManualTickets, countOfRandomTickets);
 		LottoView.displayLottoTickets(lottoTickets);
 		return lottoTickets;
 	}
