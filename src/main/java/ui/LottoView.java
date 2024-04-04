@@ -27,7 +27,9 @@ public class LottoView {
 	public static void displayLottoTickets(LottoTickets lottoTickets) {
 		StringBuilder builder = new StringBuilder();
 		for (LottoTicket lottoTicket : lottoTickets.getLottoTickets()) {
-			builder.append(lottoTicket.toString());
+			List<LottoNumber> sortedLottoNumbers = lottoTicket.getLottoNumbers();
+			Collections.sort(sortedLottoNumbers);
+			builder.append(sortedLottoNumbers.toString());
 			builder.append("\n");
 		}
 		System.out.println(builder);
