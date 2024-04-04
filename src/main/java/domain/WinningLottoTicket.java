@@ -18,6 +18,9 @@ public class WinningLottoTicket {
 	}
 
 	public LottoWinningRank calculateResult(LottoTicket lottoTicket) {
-		return LottoWinningRank.calculateRank(lottoTicket.countSameNumbers(winningLottoTicket), lottoTicket.contains(bonusNumber));
+		int matchCount = lottoTicket.countSameNumbers(winningLottoTicket);
+		boolean hasBonusNumber = lottoTicket.contains(bonusNumber);
+
+		return LottoWinningRank.calculateRank(matchCount, hasBonusNumber);
 	}
 }
