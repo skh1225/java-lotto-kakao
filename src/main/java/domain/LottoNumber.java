@@ -26,7 +26,11 @@ public class LottoNumber implements Comparable<LottoNumber> {
 	}
 
 	public static LottoNumber of(int value) {
-		return LottoNumbers.get(value-1);
+		try {
+			return LottoNumbers.get(value-1);
+		} catch (IndexOutOfBoundsException e) {
+			return new LottoNumber(value);
+		}
 	}
 
 	private static void validateLottoNumber(int value) {

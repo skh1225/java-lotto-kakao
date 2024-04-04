@@ -10,7 +10,7 @@ public class LottoTickets {
 	public static LottoTickets ofRandom(int count) {
 		List<LottoTicket> lottoTickets = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
-			lottoTickets.add(LottoTicket.random());
+			lottoTickets.add(LottoTicketGenerator.generateRandomLottoTicket());
 		}
 		return new LottoTickets(lottoTickets);
 	}

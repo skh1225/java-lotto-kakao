@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoTicket {
-	private static final int LOTTO_NUMBER_COUNT = 6;
+	public static final int LOTTO_NUMBER_COUNT = 6;
 	public static final int PRICE = 1000;
 
 	private final List<LottoNumber> lottoNumbers;
 
-	private LottoTicket(List<LottoNumber> lottoNumbers) {
+	public LottoTicket(List<LottoNumber> lottoNumbers) {
 		validateSize(lottoNumbers);
 		validateDuplicate(lottoNumbers);
 		this.lottoNumbers = lottoNumbers;
@@ -22,17 +22,6 @@ public class LottoTicket {
 			.map(LottoNumber::of)
 			.collect(Collectors.toList());
 		return new LottoTicket(lottoNumbers);
-	}
-
-	public static LottoTicket random() {
-		List<LottoNumber> shuffledNumbers = getShuffledNumbers();
-		return new LottoTicket(shuffledNumbers.subList(0, LOTTO_NUMBER_COUNT));
-	}
-
-	private static List<LottoNumber> getShuffledNumbers() {
-		List<LottoNumber> shuffledNumbers = new ArrayList<>(LottoNumber.values());
-		Collections.shuffle(shuffledNumbers);
-		return shuffledNumbers;
 	}
 
 	private void validateSize(List<LottoNumber> lottoNumbers) {
