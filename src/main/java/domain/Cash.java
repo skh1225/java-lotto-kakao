@@ -1,8 +1,10 @@
 package domain;
 
+import java.util.Objects;
+
 public class Cash {
 
-	private final int value;
+	private int value;
 
 	public Cash(int value) {
 		validateNegative(value);
@@ -24,5 +26,25 @@ public class Cash {
 
 	public int getTicketCount() {
 		return value / LottoTicket.PRICE;
+	}
+
+	public void purchase(int price, int countOfTickets) {
+		this.value -= price * countOfTickets;
+		validateNegative(value);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Cash cash = (Cash)o;
+		return value == cash.value;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
 	}
 }

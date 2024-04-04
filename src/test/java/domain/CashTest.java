@@ -25,4 +25,21 @@ public class CashTest {
 
 		assertThat(cash.getTicketCount()).isEqualTo(15);
 	}
+
+	@Test
+	void 구매할_티켓_가격의_총합보다_캐시가_적으면_예외를_던진다() {
+		Cash cash = new Cash(1000);
+
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> cash.purchase(1000,2));
+	}
+
+	@Test
+	void 티켓을_구매하면_캐시에서_차감된다() {
+		Cash cash = new Cash(2000);
+
+		cash.purchase(1000,1);
+
+		assertThat(cash).isEqualTo(new Cash(1000));
+	}
 }
