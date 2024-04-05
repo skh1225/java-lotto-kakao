@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import domain.Cash;
 import domain.LottoGame;
 import domain.LottoGameResult;
