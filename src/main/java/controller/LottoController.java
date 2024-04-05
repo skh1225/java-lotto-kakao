@@ -24,7 +24,7 @@ public class LottoController {
 	private static LottoTickets buyLottoTickets() {
 		Cash cash = LottoView.getCash();
 		int countOfManualTickets = LottoView.getCountOfManualTickets();
-		cash.purchase(LottoTicket.PRICE, countOfManualTickets);
+		cash.purchaseLottoTickets(countOfManualTickets);
 		LottoTickets lottoTickets = LottoView.getManualLottoTickets(countOfManualTickets);
 
 		int countOfRandomTickets = cash.getTicketCount();

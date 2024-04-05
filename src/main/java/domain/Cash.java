@@ -28,8 +28,8 @@ public class Cash {
 		return value / LottoTicket.PRICE;
 	}
 
-	public void purchase(int price, int countOfTickets) {
-		this.value -= price * countOfTickets;
+	public void purchaseLottoTickets(int countOfTickets) {
+		this.value -= LottoTicket.PRICE * countOfTickets;
 		validateNegative(value);
 	}
 
