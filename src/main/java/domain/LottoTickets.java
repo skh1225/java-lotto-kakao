@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -10,10 +11,12 @@ public class LottoTickets {
 		this.lottoTickets = lottoTickets;
 	}
 
-	public void addRandomLottoTicket(int count) {
-		for (int i = 0; i < count; i++) {
-			this.lottoTickets.add(LottoTicketGenerator.generateRandomLottoTicket());
-		}
+	public LottoTickets plus(LottoTickets lottoTicketsToAdd) {
+		List<LottoTicket> addedLottoTickets = new ArrayList<>(this.lottoTickets);
+
+		addedLottoTickets.addAll(lottoTicketsToAdd.getLottoTickets());
+
+		return new LottoTickets(addedLottoTickets);
 	}
 
 	public List<LottoTicket> getLottoTickets() {

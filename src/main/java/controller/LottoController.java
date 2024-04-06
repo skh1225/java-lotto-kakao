@@ -5,6 +5,7 @@ import domain.LottoGame;
 import domain.LottoGameResult;
 import domain.LottoNumber;
 import domain.LottoTicket;
+import domain.LottoTicketGenerator;
 import domain.LottoTickets;
 import domain.WinningLottoTicket;
 import ui.LottoView;
@@ -28,11 +29,11 @@ public class LottoController {
 		LottoTickets lottoTickets = LottoView.getManualLottoTickets(countOfManualTickets);
 
 		int countOfRandomTickets = cash.getTicketCount();
-		lottoTickets.addRandomLottoTicket(countOfRandomTickets);
+		LottoTickets totalLottoTickets = lottoTickets.plus(LottoTicketGenerator.generateRandomLottoTickets(countOfRandomTickets));
 
 		LottoView.displayPaidTicketCount(countOfManualTickets, countOfRandomTickets);
-		LottoView.displayLottoTickets(lottoTickets);
-		return lottoTickets;
+		LottoView.displayLottoTickets(totalLottoTickets);
+		return totalLottoTickets;
 	}
 
 	private static WinningLottoTicket inputLottoWinningTicket() {
