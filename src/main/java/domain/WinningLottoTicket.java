@@ -24,7 +24,7 @@ public class WinningLottoTicket {
 		int matchCount = lottoTicket.countSameNumbers(winningLottoTicket);
 		boolean hasBonusNumber = lottoTicket.contains(bonusNumber);
 
-		return LottoWinningRank.calculateRank(matchCount, hasBonusNumber);
+		return LottoWinningRank.calculateWinningRank(matchCount, hasBonusNumber);
 	}
 
 	public List<LottoWinningRank> calculateResults(LottoTickets lottoTickets) {
