@@ -1,20 +1,29 @@
 package domain;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LottoGameResult {
 
-	private final Map<LottoWinningRank, Integer> rankCounts = new HashMap<>();
+	private final Map<LottoWinningRank, Integer> rankCounts;
 
-	public LottoGameResult() {
+	private LottoGameResult(Map<LottoWinningRank, Integer> rankCounts) {
+		this.rankCounts = rankCounts;
+	}
+
+	public static LottoGameResult of(List<LottoWinningRank> lottoWinningRanks) {
+		Map<LottoWinningRank, Integer> rankCounts = new HashMap<>();
+
 		for (LottoWinningRank lottoWinningRank : LottoWinningRank.values()) {
 			rankCounts.put(lottoWinningRank, 0);
 		}
-	}
 
-	public void add(LottoWinningRank lottoWinningRank) {
-		rankCounts.put(lottoWinningRank, rankCounts.get(lottoWinningRank) + 1);
+		for (LottoWinningRank lottoWinningRank : lottoWinningRanks) {
+			rankCounts.put(lottoWinningRank, rankCounts.get(lottoWinningRank) + 1);
+		}
+
+		return new LottoGameResult(rankCounts);
 	}
 
 	public int getCount(LottoWinningRank lottoWinningRank) {

@@ -42,10 +42,9 @@ public class LottoController {
 		return new WinningLottoTicket(winningTicket, bonusNumber);
 	}
 
-	private static LottoGameResult runLottoGame(LottoTickets lottoTickets,
-		WinningLottoTicket lottoWinningNumbers) {
+	private static LottoGameResult runLottoGame(LottoTickets lottoTickets, WinningLottoTicket lottoWinningNumbers) {
 		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
-		return lottoGame.calculateResult();
+		return lottoGame.calculateGameResult();
 	}
 
 	private static void displayLottoGameResult(LottoGameResult lottoGameResult) {

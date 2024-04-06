@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class WinningLottoTicket {
 
 	private final LottoTicket winningLottoTicket;
@@ -22,5 +25,12 @@ public class WinningLottoTicket {
 		boolean hasBonusNumber = lottoTicket.contains(bonusNumber);
 
 		return LottoWinningRank.calculateRank(matchCount, hasBonusNumber);
+	}
+
+	public List<LottoWinningRank> calculateResults(LottoTickets lottoTickets) {
+		return lottoTickets.getLottoTickets()
+			.stream()
+			.map(this::calculateResult)
+			.collect(Collectors.toList());
 	}
 }

@@ -10,12 +10,7 @@ public class LottoGame {
 		this.winningLottoTicket = winningLottoTicket;
 	}
 
-	public LottoGameResult calculateResult() {
-		LottoGameResult result = new LottoGameResult();
-		for (LottoTicket lottoTicket : lottoTickets.getLottoTickets()) {
-			LottoWinningRank lottoWinningRank = winningLottoTicket.calculateResult(lottoTicket);
-			result.add(lottoWinningRank);
-		}
-		return result;
+	public LottoGameResult calculateGameResult() {
+		return LottoGameResult.of(winningLottoTicket.calculateResults(this.lottoTickets));
 	}
 }

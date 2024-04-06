@@ -29,7 +29,7 @@ public class LottoGameTest {
 
 		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
 
-		LottoGameResult result = lottoGame.calculateResult();
+		LottoGameResult result = lottoGame.calculateGameResult();
 
 		assertAll(
 			() -> assertThat(result.getCount(LottoWinningRank.FIRST_PRIZE)).isEqualTo(1),
