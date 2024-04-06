@@ -20,17 +20,17 @@ public class WinningLottoTicket {
 		}
 	}
 
-	public LottoWinningRank calculateResult(LottoTicket lottoTicket) {
+	private LottoWinningRank calculateWinningRankOfTicket(LottoTicket lottoTicket) {
 		int matchCount = lottoTicket.countSameNumbers(winningLottoTicket);
 		boolean hasBonusNumber = lottoTicket.contains(bonusNumber);
 
 		return LottoWinningRank.calculateWinningRank(matchCount, hasBonusNumber);
 	}
 
-	public List<LottoWinningRank> calculateResults(LottoTickets lottoTickets) {
+	public List<LottoWinningRank> calculateWinningRanksOfTickets(LottoTickets lottoTickets) {
 		return lottoTickets.getLottoTickets()
 			.stream()
-			.map(this::calculateResult)
+			.map(this::calculateWinningRankOfTicket)
 			.collect(Collectors.toList());
 	}
 }

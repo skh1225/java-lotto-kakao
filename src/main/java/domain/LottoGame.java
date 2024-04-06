@@ -11,6 +11,6 @@ public class LottoGame {
 	}
 
 	public LottoGameResult calculateGameResult() {
-		return LottoGameResult.of(winningLottoTicket.calculateResults(this.lottoTickets));
+		return LottoGameResult.of(winningLottoTicket.calculateWinningRanksOfTickets(this.lottoTickets));
 	}
 }
