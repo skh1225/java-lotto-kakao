@@ -14,7 +14,7 @@ public class LottoTicket {
 	public LottoTicket(List<LottoNumber> lottoNumbers) {
 		validateSize(lottoNumbers);
 		validateDuplicate(lottoNumbers);
-		this.lottoNumbers = lottoNumbers;
+		this.lottoNumbers = new ArrayList<>(lottoNumbers);
 	}
 
 	public static LottoTicket of(List<Integer> numbers) {
