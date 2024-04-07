@@ -84,7 +84,8 @@ public class LottoView {
 		System.out.println(builder);
 	}
 
-	private static void appendRankResult(StringBuilder builder, LottoGameResult lottoGameResult, LottoWinningRank lottoWinningRank) {
+	private static void appendRankResult(StringBuilder builder, LottoGameResult lottoGameResult,
+		LottoWinningRank lottoWinningRank) {
 		builder.append(String.format("%d개 일치 ", lottoWinningRank.getMatchCount()));
 
 		if (lottoWinningRank == LottoWinningRank.SECOND_PRIZE) {

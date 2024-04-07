@@ -20,7 +20,8 @@ public class Cash {
 
 	private void validateLessThanTicketPrice(int value) {
 		if (value < LottoTicket.PRICE) {
-			throw new IllegalArgumentException(String.format("잔여 Cash가 부족합니다. value: %d < price: %d", value, LottoTicket.PRICE));
+			throw new IllegalArgumentException(
+				String.format("잔여 Cash가 부족합니다. value: %d < price: %d", value, LottoTicket.PRICE));
 		}
 	}
 
