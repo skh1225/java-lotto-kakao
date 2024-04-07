@@ -26,12 +26,13 @@ public class LottoController {
 		Cash cash = LottoView.getCash();
 		int countOfManualTickets = LottoView.getCountOfManualTickets();
 		cash.purchaseLottoTickets(countOfManualTickets);
-		LottoTickets lottoTickets = LottoView.getManualLottoTickets(countOfManualTickets);
+		LottoTickets manualLottoTickets = LottoView.getManualLottoTickets(countOfManualTickets);
 
-		int countOfRandomTickets = cash.getTicketCount();
-		LottoTickets totalLottoTickets = lottoTickets.plus(LottoTicketGenerator.generateRandomLottoTickets(countOfRandomTickets));
+		int countOfAutoLottoTickets = cash.getTicketCount();
+		LottoTickets autoLottoTickets = LottoTicketGenerator.generateRandomLottoTickets(countOfAutoLottoTickets);
+		LottoTickets totalLottoTickets = manualLottoTickets.plus(autoLottoTickets);
 
-		LottoView.displayPaidTicketCount(countOfManualTickets, countOfRandomTickets);
+		LottoView.displayPaidTicketCount(countOfManualTickets, countOfAutoLottoTickets);
 		LottoView.displayLottoTickets(totalLottoTickets);
 		return totalLottoTickets;
 	}
