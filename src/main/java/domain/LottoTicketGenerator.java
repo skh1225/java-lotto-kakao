@@ -3,6 +3,8 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoTicketGenerator {
 	public static LottoTicket generateRandomLottoTicket() {
@@ -11,13 +13,9 @@ public class LottoTicketGenerator {
 	}
 
 	public static LottoTickets generateRandomLottoTickets(int countOfTickets) {
-		List<LottoTicket> lottoTickets = new ArrayList<>();
-
-		for (int i = 0; i < countOfTickets; i++) {
-			lottoTickets.add(LottoTicketGenerator.generateRandomLottoTicket());
-		}
-
-		return new LottoTickets(lottoTickets);
+		return Stream.generate(LottoTicketGenerator::generateRandomLottoTicket)
+			.limit(countOfTickets)
+			.collect(Collectors.collectingAndThen(Collectors.toList(), LottoTickets::new));
 	}
 
 	private static List<LottoNumber> getShuffledNumbers() {
