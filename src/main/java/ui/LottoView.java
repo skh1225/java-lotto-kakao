@@ -26,7 +26,7 @@ public class LottoView {
 		return Integer.parseInt(SCANNER.nextLine());
 	}
 
-	public static List<List<Integer>>  getManualLottoTickets(int countOfManualTickets) {
+	public static List<List<Integer>> getManualLottoTickets(int countOfManualTickets) {
 		System.out.printf("%n수동으로 구매할 번호를 입력해 주세요.%n");
 		List<List<Integer>> lottoTickets = new ArrayList<>();
 
