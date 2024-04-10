@@ -1,10 +1,8 @@
 package controller;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import domain.Cash;
-import domain.LottoGame;
 import domain.LottoGameResult;
 import domain.LottoNumber;
 import domain.LottoTicket;
@@ -52,8 +50,7 @@ public class LottoController {
 	}
 
 	private static LottoGameResult runLottoGame(LottoTickets lottoTickets, WinningLottoTicket lottoWinningNumbers) {
-		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
-		return lottoGame.calculateGameResult();
+		return lottoWinningNumbers.calculateWinningRanksOfTickets(lottoTickets);
 	}
 
 	private static void displayLottoGameResult(LottoGameResult lottoGameResult) {

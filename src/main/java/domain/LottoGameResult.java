@@ -3,6 +3,7 @@ package domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class LottoGameResult {
 
@@ -38,5 +39,20 @@ public class LottoGameResult {
 			totalPrize += entry.getValue() * entry.getKey().getPrize();
 		}
 		return totalPrize / (double)(ticketCount * LottoTicket.PRICE);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		LottoGameResult that = (LottoGameResult)o;
+		return Objects.equals(rankCounts, that.rankCounts);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(rankCounts);
 	}
 }

@@ -41,17 +41,19 @@ public class WinningLottoTicketTest {
 			List.of(lottoTicket1, lottoTicket2, lottoTicket3, lottoTicket4, lottoTicket5, lottoTicket6, lottoTicket7,
 				lottoTicket8));
 
-		List<LottoWinningRank> lottoWinningRanks = List.of(
-			LottoWinningRank.FIRST_PRIZE,
-			LottoWinningRank.SECOND_PRIZE,
-			LottoWinningRank.THIRD_PRIZE,
-			LottoWinningRank.FOURTH_PRIZE,
-			LottoWinningRank.FIFTH_PRIZE,
-			LottoWinningRank.LOSE,
-			LottoWinningRank.LOSE,
-			LottoWinningRank.LOSE
+		LottoGameResult lottoGameResult = LottoGameResult.of(
+			List.of(
+				LottoWinningRank.FIRST_PRIZE,
+				LottoWinningRank.SECOND_PRIZE,
+				LottoWinningRank.THIRD_PRIZE,
+				LottoWinningRank.FOURTH_PRIZE,
+				LottoWinningRank.FIFTH_PRIZE,
+				LottoWinningRank.LOSE,
+				LottoWinningRank.LOSE,
+				LottoWinningRank.LOSE
+			)
 		);
 
-		assertThat(winningLottoTicket.calculateWinningRanksOfTickets(lottoTickets)).isEqualTo(lottoWinningRanks);
+		assertThat(winningLottoTicket.calculateWinningRanksOfTickets(lottoTickets)).isEqualTo(lottoGameResult);
 	}
 }

@@ -29,10 +29,12 @@ public class WinningLottoTicket {
 		return LottoWinningRank.calculateWinningRank(matchCount, hasBonusNumber);
 	}
 
-	public List<LottoWinningRank> calculateWinningRanksOfTickets(LottoTickets lottoTickets) {
-		return lottoTickets.getLottoTickets()
+	public LottoGameResult calculateWinningRanksOfTickets(LottoTickets lottoTickets) {
+		return LottoGameResult.of(
+			lottoTickets.getLottoTickets()
 			.stream()
 			.map(this::calculateWinningRankOfTicket)
-			.collect(Collectors.toList());
+			.collect(Collectors.toList())
+		);
 	}
 }
