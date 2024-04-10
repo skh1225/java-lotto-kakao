@@ -26,9 +26,9 @@ public class LottoView {
 		return Integer.parseInt(SCANNER.nextLine());
 	}
 
-	public static LottoTickets getManualLottoTickets(int countOfManualTickets) {
+	public static List<List<Integer>>  getManualLottoTickets(int countOfManualTickets) {
 		System.out.printf("%n수동으로 구매할 번호를 입력해 주세요.%n");
-		List<LottoTicket> lottoTickets = new ArrayList<>();
+		List<List<Integer>> lottoTickets = new ArrayList<>();
 
 		for (int i = 0; i < countOfManualTickets; i++) {
 			String line = SCANNER.nextLine();
@@ -36,10 +36,10 @@ public class LottoView {
 				.map(String::trim)
 				.map(Integer::parseInt)
 				.collect(Collectors.toUnmodifiableList());
-			lottoTickets.add(LottoTicket.of(numberStrings));
+			lottoTickets.add(numberStrings);
 		}
 
-		return new LottoTickets(lottoTickets);
+		return lottoTickets;
 	}
 
 	public static void displayPaidTicketCount(int manualTicketCount, int randomTicketCount) {
@@ -57,14 +57,14 @@ public class LottoView {
 		System.out.println(builder);
 	}
 
-	public static LottoTicket getWinningNumbers() {
+	public static List<Integer> getWinningNumbers() {
 		System.out.println("지난 주 당첨 번호를 입력해 주세요.");
 		String line = SCANNER.nextLine();
 		List<Integer> numberStrings = Stream.of(line.split(","))
 			.map(String::trim)
 			.map(Integer::parseInt)
 			.collect(Collectors.toUnmodifiableList());
-		return LottoTicket.of(numberStrings);
+		return numberStrings;
 	}
 
 	public static LottoNumber getBonusNumber() {

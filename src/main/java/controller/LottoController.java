@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import domain.Cash;
 import domain.LottoGame;
 import domain.LottoGameResult;
@@ -26,7 +29,12 @@ public class LottoController {
 		Cash cash = LottoView.getCash();
 		int countOfManualTickets = LottoView.getCountOfManualTickets();
 		cash.purchaseLottoTickets(countOfManualTickets);
-		LottoTickets manualLottoTickets = LottoView.getManualLottoTickets(countOfManualTickets);
+		LottoTickets manualLottoTickets = new LottoTickets(
+			LottoView.getManualLottoTickets(countOfManualTickets)
+				.stream()
+				.map(LottoTicket::of)
+				.collect(Collectors.toList())
+		);
 
 		int countOfAutoLottoTickets = cash.getTicketCount();
 		LottoTickets autoLottoTickets = LottoTicketGenerator.generateRandomLottoTickets(countOfAutoLottoTickets);
@@ -38,7 +46,7 @@ public class LottoController {
 	}
 
 	private static WinningLottoTicket inputLottoWinningTicket() {
-		LottoTicket winningTicket = LottoView.getWinningNumbers();
+		LottoTicket winningTicket = LottoTicket.of(LottoView.getWinningNumbers());
 		LottoNumber bonusNumber = LottoView.getBonusNumber();
 		return new WinningLottoTicket(winningTicket, bonusNumber);
 	}
