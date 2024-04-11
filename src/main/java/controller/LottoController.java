@@ -27,12 +27,7 @@ public class LottoController {
 		Cash cash = LottoView.getCash();
 		int countOfManualTickets = LottoView.getCountOfManualTickets();
 		cash.purchaseLottoTickets(countOfManualTickets);
-		LottoTickets manualLottoTickets = new LottoTickets(
-			LottoView.getManualLottoTickets(countOfManualTickets)
-				.stream()
-				.map(LottoTicket::of)
-				.collect(Collectors.toList())
-		);
+		LottoTickets manualLottoTickets = createManualTickets(countOfManualTickets);
 
 		int countOfAutoLottoTickets = cash.getTicketCount();
 		LottoTickets autoLottoTickets = LottoTicketGenerator.generateRandomLottoTickets(countOfAutoLottoTickets);
@@ -41,6 +36,15 @@ public class LottoController {
 		LottoView.displayPaidTicketCount(countOfManualTickets, countOfAutoLottoTickets);
 		LottoView.displayLottoTickets(totalLottoTickets);
 		return totalLottoTickets;
+	}
+
+	private static LottoTickets createManualTickets(int countOfManualTickets) {
+		return new LottoTickets(
+			LottoView.getManualLottoTickets(countOfManualTickets)
+				.stream()
+				.map(LottoTicket::of)
+				.collect(Collectors.toList())
+		);
 	}
 
 	private static WinningLottoTicket inputLottoWinningTicket() {
